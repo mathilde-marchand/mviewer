@@ -15,9 +15,7 @@ Dans cette page nous mettrons des exemples de bug récurrents dans le mviewer et
               :alt: Légende non disponible
               :align: left
 
-A venir...
-
-A venir...
+S'affiche pour une donnée non WMS si legendurl ou vectorlegend non renseignés.
 
 
 * **Je n'arrive pas à interroger ma couche**

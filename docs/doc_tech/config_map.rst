@@ -14,17 +14,18 @@ Syntaxe
        :linenos:
 
 	<mapoptions
-        maxzoom=""
-        projection=""
-        center=""
-        zoom=""
-        projextent=""
-        maxextent=""
-        rotation=""
-        scalebar=""
-        scaleunits=""
-        scalesteps=""
-        extent=""/>
+		maxzoom=""
+		projection=""
+		center=""
+		zoom=""
+		projextent=""
+		maxextent=""
+		rotation=""
+		scalebar=""
+		scaleunits=""
+		scalesteps=""
+		extent=""
+	/>
 
 
 Paramètres
@@ -34,12 +35,12 @@ Paramètres
 * ``projection`` : paramètre obligatoire de type texte définissant la projection (code EPSG) utilisée par la carte. Exemple **EPSG:3857**.
 * ``center`` :guilabel:`studio` : paramètre optionnel de type numérique définissant les coordonnées géographiques du centre de la carte dans la projection choisie. Exemple **-220750.13,6144925.57**.
 * ``zoom`` :guilabel:`studio` : paramètre optionnel de type entier définissant le zoom initial de la carte. Valeur par défaut **8**.
-* ``projextent`` : paramètre obligatoire de type texte définissant les limites géographiques de la projection utilisée. Ce paramètre n'est pas obligatoire pour les projections EPSG:4326 et EPSG:3857.
+* ``projextent`` : paramètre de type texte définissant les limites géographiques de la projection utilisée. Ce paramètre n'est pas obligatoire pour les projections EPSG:4326 et EPSG:3857.
 * ``maxextent`` :guilabel:`studio` : paramètre optionnel de type texte définissant les limites géographiques pour la vue cartographique
-* ``scalebar`` : paramètre optionnel de type texte pour afficher l'échelle en barre et non en ligne ("false" par défaut).
-* ``scaleunits`` : paramètre optionnel de type texte pour préciser l'unité de mesure de l'échelle ("metric" par défaut)
-* ``scalesteps`` : paramètre optionnel de type texte pour préciser le nombre de pas de l'échelle ("2" par défaut).
-* ``scaletext`` : paramètre optionnel de type texte pour préciser si on souhaite afficher le texte au dessus d'une échelle en barre ("true" par défaut).
+* ``scalebar`` : paramètre optionnel de type texte pour afficher l'échelle en barre et non en ligne ( **false** par défaut).
+* ``scaleunits`` : paramètre optionnel de type texte pour préciser l'unité de mesure de l'échelle ( **metric** par défaut)
+* ``scalesteps`` : paramètre optionnel de type texte pour préciser le nombre de pas de l'échelle ( **2** par défaut).
+* ``scaletext`` : paramètre optionnel de type texte pour préciser si on souhaite afficher le texte au dessus d'une échelle en barre ( **true** par défaut).
 * ``extent`` : paramètre optionnel de type texte pour surcharger le center et le zoom afin de garder la cohérence entre la sélection de la map et sa prévisualisation (est lui même surchargé par maxextent qui limite le déplacement de la carte en prévisualisation).
 
 Exemple

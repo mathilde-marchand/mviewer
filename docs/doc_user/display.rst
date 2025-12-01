@@ -23,7 +23,7 @@ Là, vous avez la possibilité :
 * de modifier l'opacité *(transparence)*,
 * d'afficher des informations sous la forme d'infobulles *(optionnel)*,
 * de voir la source de la donnée *(optionnel)*,
-* de supprimer la couche de la carte*(en cliquant sur l'icone* |display_remove| *)*
+* de supprimer la couche de la carte *(en cliquant sur l'icone* |display_remove| *)*
 
 .. image:: ../_images/user/display/display.png
               :alt: Options sur les couches
@@ -39,8 +39,9 @@ Autres options
 De plus, l'utilisateur à la possibilité de :
 
 * modifier l'ordre d'affichage : pour cela, il vous suffit de cliquer sur une couche et de la glisser / déposer à l'endroit désiré. Notez que la couche en haut dans la liste sera affichée au premier plan dans la carte.
+* plier / déplier le gestionnaire de ma couche pour voir toutes les options disponibles ( |display_expanded| )
 * supprimer *(ne plus afficher)* l'ensemble des couches ( |display_trash| )
-* plier / déplier le gestionnaire ( |display_unfold| )
+* afficher / désafficher le gestionnaire ( |display_unfold| )
 
 
 .. |display_trash| image:: ../_images/user/display/display_trash.png
@@ -48,5 +49,9 @@ De plus, l'utilisateur à la possibilité de :
 	      :width: 16 pt
 
 .. |display_unfold| image:: ../_images/user/display/display_unfold.png
+              :alt: Plier ou déplier le gestionnaire
+	      :width: 16 pt
+
+.. |display_expanded| image:: ../_images/user/display/display_expanded.png
               :alt: Plier ou déplier le gestionnaire
 	      :width: 16 pt

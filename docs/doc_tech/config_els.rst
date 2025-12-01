@@ -12,12 +12,12 @@ Permettre d'interroger un index Elasticsearch à partir d'une saisie libre (exem
 Prérequis
 -----------
 
-Installer une instance Elasticsearch `<https://www.elastic.co/fr/downloads/elasticsearch>`_.
+Installer une instance Elasticsearch `<https://www.elastic.co/fr/downloads/elasticsearch>`_ version 7.x  5.x.
 
 Création des indexs
 --------------------
 
-Depuis la version 7, il faut un index par couche mviewer
+Depuis la version 7, il faut un index par couche mviewer.
 
 Commencé par créer un index nommé comme votre **layerid** avec un champ de type **geo_shape** nommé geometry et un champ de type **keyword** nommé id.
 
@@ -47,7 +47,7 @@ Pour celà, depuis le serveur hôte hébergeant l'instance Elasticsearch, lancer
 Alimenter l'index avec des données
 ------------------------------------
 
-Il existe plusieurs mode d'alimentation. Un des plus connus consiste en l'utilisation de logstash `<https://www.elastic.co/downloads/logstash>`_. et du plugin jdbc `<https://www.elastic.co/guide/en/logstash/current/plugins-inputs-jdbc.html>`_. permettant d'indexer des données provenant de bases de données.
+Il existe plusieurs mode d'alimentation. Un des plus connus consiste en l'utilisation de logstash `<https://www.elastic.co/downloads/logstash`_. et du plugin jdbc `<https://www.elastic.co/docs/reference/logstash/plugins/plugins-inputs-jdbc>`_. permettant d'indexer des données provenant de bases de données.
 
 Une autre méthode consiste à utiliser l'API d'indexation d'Elasticsearch `<https://www.elastic.co/guide/en/elasticsearch/reference/5.6/docs-bulk.html>`_. via une commande CURL et un fichier contenant les instructions et données d'indexation et les données. Le fichier démo lycee permet de rapidement alimenter un index avec les données des lycées bretons.
 
@@ -68,9 +68,9 @@ Si tout s'est bien déroulé, la commande suivante doit renvoyer deux lycées :
 
    $ curl -XGET 'localhost:9200/layerid?q=zola&pretty'
 
-Pour logstash et une récupération des données directement depuis une base de données, il faut créer un fichier de configuration dans /etc/logstash/conf.d, par exemple layerid.conf
+Pour logstash et une récupération des données directement depuis une base de données, il faut créer un fichier de configuration dans /etc/logstash/conf.d, par exemple layerid.conf.
 
-exemple
+Exemple pour un elasticsearch 7.x :
 
 .. code-block:: bash
 
@@ -81,10 +81,6 @@ exemple
         jdbc_password => "paswword"
         jdbc_driver_class => "org.postgresql.Driver"
         statement => "SELECT **(champ_souhaitées dont clé primaire au mina)**, ST_AsEWKT(ST_TRANSFORM(geom, 4326)) as geometry from schemaname.tablename WHERE geom IS NOT NULL"
-        jdbc_paging_enabled => "true"
-        jdbc_page_size => "50000"
-        jdbc_fetch_size => "10000"
-        #schedule => "* * * * *"
     }
    }
    
@@ -101,10 +97,11 @@ exemple
        hosts => ["http://localhost"]
        index => "LAYERID"
        document_id => "%{cle_primaire_jointure}"  
+       doc_as_upsert => true
     }
    }
 
-Attention les données indexées dans elasticsearch sont toujours en 4326
+Attention les données indexées dans elasticsearch sont toujours en 4326.
 
 Puis lancer l'indexation : 
 

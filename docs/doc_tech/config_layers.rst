@@ -16,7 +16,8 @@ Configurer - Les couches
 .. code-block:: xml
        :linenos:
 
-	   <layer   id=""
+	   <layer   
+                id=""
                 name=""
                 scalemin=""
                 scalemax=""
@@ -103,15 +104,15 @@ Paramètres pour gérer l'affichage de la couche
 * ``style`` :guilabel:`studio` : Style(s) de la couche. Si plusieurs styles , utiliser la virgule comme séparateur. Si la couche est de type wms, il faut faire référence à un style sld. Si la couche est de type geojson, il faut faire référence à un style définit dans lib/featurestyles.js. Si la couche est de type vector-tms, le style correspond à la valeur indiquée en tant que première clé de la propriété "sources" du fichier de style au format JSON. Si la couche est de type customlayer, le style n'est pas défini ici.
 * ``styleurl`` :guilabel:`studio` : pour les couches de type vector-tms uniquement, il indique l'URL vers le fichier de style au format JSON.
 * ``styletitle`` :guilabel:`studio` : Titres à utiliser pour la liste des styles associés.
-* ``stylesalias`` :guilabel:`studio` : Titres à utiliser pour chaques style. utiliser la virgule comme séparateur si plusieurs styles.
+* ``stylesalias`` :guilabel:`studio` : Titres à utiliser pour chaques style. Utiliser la virgule comme séparateur si plusieurs styles.
 * ``sld`` :guilabel:`studio` : Lien vers un SLD stocké sur le web. Dans ce fichier SLD, la balise sld:Name contenue dans sld:NamedLayer doit être égale au nom de la couche sans mention du namespace. Exemple <sld:Name>aeroports</sld:Name>. Si plusieurs styles , utiliser la virgule comme séparateur. S'applique uniquement aux layers WMS. Il faut indiquer l'URL résolvable par le serveur WMS du ou des sld.
 * ``index`` :guilabel:`studio` : Ordre d'affichage de la couche sur la carte et dans la légende au démarrage. Les couches avec ce paramètre seront visibles sous les toplayers. Les couches sans ce paramètre ni toplayer seront affichées dans l'ordre d'écriture dans le XML.
 * ``scalemin`` :guilabel:`studio` : Échelle minimum de la couche.
 * ``scalemax`` :guilabel:`studio` : Échelle maximum de la couche.
 * ``dynamiclegend`` :guilabel:`studio` : Booléen précisant si la légende est liée à l'échelle de la carte et si elle nécessite d'être actualisée à chaque changement d'échelle de la carte.
 * ``exclusive`` :guilabel:`studio` :  Booléen stipulant si la couche est exclusive. Si la valeur est "true", l'affichage de cette couche masquera automatiquement toutes les autres couches ayant ce paramètre activé.
-* ``legendurl`` :guilabel:`studio` : url permettant de récupérer la légende. Si non défini, c'est un GetLegendGraphic qui est effectué.
-* ``filter`` :guilabel:`studio` : Expression CQL permettant de filtrer la couche ex: insee=35000 Ou INTERSECT(the_geom, POINT (-74.817265 40.5296504)) [tutorial] (http://docs.geoserver.org/stable/en/user/tutorials/cql/cql_tutorial.html#cql-tutorial).
+* ``legendurl`` :guilabel:`studio` : Url permettant de récupérer la légende. Si non défini, c'est un GetLegendGraphic qui est effectué.
+* ``filter`` :guilabel:`studio` : Expression CQL permettant de filtrer la couche ex: insee=35000 Ou INTERSECT(the_geom, POINT (-74.817265 40.5296504)) (http://docs.geoserver.org/stable/en/user/tutorials/cql/cql_tutorial.html#cql-tutorial).
 * ``filterstyle`` :guilabel:`studio` : pour les couches de type vector-tms uniquement. Il permet de ne pas conserver, dans le style, la représentation de certaines couches. Cela permet donc de ne pas représenter un type de données présent dans le flux tuilé vectoriel. Il faut indiquer ici le nom d'une ou de plusieurs couches référencées dans la propriété "source-layer" du fichier de style au format JSON. Lorsque plusieurs couches sont à ajouter, le séparateur est la virgule et sans espace.
 * ``toplayer`` :guilabel:`studio` : Booléan stipulant si la couche est affichée au premier plan sur la carte. La valeur par défaut est false. Si plusieurs couches sont en toplayer, elles seront affichées dans l’ordre d’écriture du XML.
 * ``expanded`` :guilabel:`studio` : Booléan précisant si le panneau de la couche est agrandi au démarrage. La valeur par défaut est false.
@@ -122,7 +123,7 @@ Paramètres pour gérer l'affichage de la couche
 Paramètres pour gérer attributions et métadonnées
 =====================================================
 
-* ``attribution`` :guilabel:`studio` : Copyright de la couche. Le mot-clé "metadata" permet de récupérer cette information depuis des métadonnées compliantes au Dublin Core (champs "source").
+* ``attribution`` :guilabel:`studio` : Copyright de la couche affiché sous la légende. Le mot-clé "metadata" permet de récupérer cette information depuis des métadonnées compliantes au Dublin Core (champs "source").
 * ``metadata`` :guilabel:`studio` : Lien vers la fiche de metadonnées complète.
 * ``metadata-csw`` :guilabel:`studio` : Requête CSW pour l'affiche dans la popup du détail de la couche. Mviewer récupère également la date de création ou dernière mise à jour si cela est en Dublin Core.
 
@@ -214,7 +215,7 @@ Si vous souhaitez effectuer un filtre sur plusieurs couches, voir :ref:`configcu
 
 Autres paramètres
 ====================
-* ``customlayer`` : Texte précisant le nom du fichier JavaScript permettant la création d'une couche ou bien l'url complet du fichier JavaScript.
+* ``customlayer`` : Texte précisant le nom du fichier JavaScript permettant la création d'une couche ou bien l'url complète du fichier JavaScript.
 
         * ``URL renseignée``: le fichier JavaScript (.js) correspondant à l'URL est chargé
         * ``Nom du fichier renseigné``: l'URL est fabriquée automatiquement à partir de l'ID de la couche. Le fichier devra être dans le répertoire customLayers/layerid.js (ou layerid correspond à l'id de la couche)
@@ -310,6 +311,6 @@ Cet élément optionnel, permet d'associer un template type Mustache (https://gi
 
 **Paramètres**
 
-* ``url`` :guilabel:`studio` : paramètre optionnel de type url qui indique l'emplacement du template à utiliser.
+* ``url`` :guilabel:`studio` : paramètre obligatoire de type url qui indique l'emplacement du template à utiliser.
 
 

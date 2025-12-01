@@ -7,7 +7,7 @@
 Crédits
 =====================
 
-En cliquant sur l'icone ( |CreditsIcon| ) l'utilisateur fait apparaître les crédits du :ref:`maps` actuellement affiché. Lorsque ce dernier est changé, les crédits sont automatiquement mis à jour.
+En cliquant sur l'icone ( |CreditsIcon| ) l'utilisateur fait apparaître les crédits du fond de carte actuellement affiché. Lorsque ce dernier est changé, les crédits sont automatiquement mis à jour.
 
 .. image:: ../_images/user/credits/credits.png
               :alt: Afficher les crédits

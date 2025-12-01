@@ -61,14 +61,14 @@ Pour activer l'outil, vous devez le rajouter dans la balise ``<tools>`` et activ
 Paramètres
 ----------
 
-* geometryTypes : (string) - List des géométries à dessiner.
-* snapLayerId : (string) - Un ID de couche WFS déjà utilisé dans la configuration XML (e.g custom layer)
-* snapLayerUrl : (string) - URL complète d'une couche WFS (le format doit être en ``application/json`` )
-* snapLimitZoom : (int) - Limite l'activation du snapping par niveau de zoom. Cela permet de limiter le chargement d'entités WFS. Le snapping sera actif i le zoom de la carte est supérieur à cette valeur.
-* help : (boolean) - Utilsier l'aide
-* nbPixelsToClosePolygon* : (int) - Distance en pixels pour fermer automatiquement la forme et créer un polygone.
-* singleDraw : (boolen) - True pour dessiner uniquement une forme à la fois.
-* snapTolerance : (int) - Tolérence du snapping en pixel (c.fg pixelTolerance ol > v8.0)
+* ``geometryTypes`` : (string) - List des géométries à dessiner.
+* ``snapLayerId`` : (string) - Un ID de couche WFS déjà utilisé dans la configuration XML (e.g custom layer)
+* ``snapLayerUrl`` : (string) - URL complète d'une couche WFS (le format doit être en ``application/json`` )
+* ``snapLimitZoom`` : (int) - Limite l'activation du snapping par niveau de zoom. Cela permet de limiter le chargement d'entités WFS. Le snapping sera actif i le zoom de la carte est supérieur à cette valeur.
+* ``help`` : (boolean) - Utilsier l'aide
+* ``nbPixelsToClosePolygon`` : (int) - Distance en pixels pour fermer automatiquement la forme et créer un polygone.
+* ``singleDraw`` : (boolen) - True pour dessiner uniquement une forme à la fois.
+* ``snapTolerance`` : (int) - Tolérence du snapping en pixel (c.fg pixelTolerance ol > v8.0)
 
 
 Exemples

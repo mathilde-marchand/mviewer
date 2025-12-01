@@ -488,3 +488,23 @@ Pour cela, il suffit d’ajouter ceci dans votre fichier XML :
     </extensions>
 
 Pour plus d'informations sur le fonctionnement de cette extension, veuillez consulter la documentation complète à l'adresse suivante : https://github.com/mviewer/mviewer-addons/blob/main/streetview/README.md
+
+
+Extension panoramax
+--------------------------------
+
+Cette extension permet d'afficher des vues issues du projet panoramax dans mviewer : 
+
+.. image:: ../_images/dev/config_extension/panoramax.png
+              :alt: Vue panoramax
+              :align: center
+
+Pour cela, il suffit d’ajouter ceci dans votre fichier XML :
+
+.. code-block:: xml
+
+    <extensions>    
+        <extension type="component" id="panoramax" path="addons"/>
+    </extensions>
+
+Pour plus d'informations sur le fonctionnement de cette extension, veuillez consulter la documentation complète à l'adresse suivante : https://github.com/mviewer/mviewer-addons/blob/main/panoramax/README.md

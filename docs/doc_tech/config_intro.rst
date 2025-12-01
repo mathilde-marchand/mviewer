@@ -15,7 +15,7 @@ Il est possible de créer n fichiers de configuration (config1.xml, config2.xml.
 
 Pour voir des **exemples d'applications et de fichiers de configuration XML**, rendez vous à cette page : `démos <http://kartenn.region-bretagne.fr/kartoviz/demo/>`_.
 
-En cliquant sur **Sources**, vous accèderez au fichier XML et le le bouton **Live!** vous permet de visualisation l'application.
+En cliquant sur **Code**, vous accèderez au fichier XML et le le bouton **Démo** vous permet de visualisation l'application.
 
 Structure du fichier de configuration
 --------------------------------------
@@ -52,11 +52,11 @@ Il est possible d'instancier un mviewer avec des **paramètres** de configuratio
 * ``#`` : Il s'agit d'un raccourci pour appeler une config présente dans le dossier apps. ex: ``mviewer/#mon_appli``.
 * ``theme`` : Thème css à utiliser ex: ``?theme=geobretagne`` pour charger le theme doit être dans css/themes/geobretagne.css.
 * ``wmc`` : liste des contextes OGC WMC (séparés par des virgules) à charger afin d'alimenter le panel de gauche ex : ``mviewer/?wmc=demo/hydro.wmc``
-* ``popup`` : true ou false. Si true, une popup s'affiche sur la carte afin d'afficher le résultat de l'interrogation de couches.
+* ``popup`` : true ou false. Si true, la page d'aide configurée s'affiche.
 * ``lang`` : Langue à utiliser pour l'interface. Passer exemple ``?lang=en``.
 * ``mode`` : Mode d'affichage à utiliser (d - default, s - simplifié, u - ultrasimplifié). Le mode simplifié ne dispose pas du panneau des thématiques et le mode ultra simplifié ne dispose pas de la barre de navigation.
 * ``title`` : Titre à utiliser. Seulement exploité en mode défault et simplifié.
-* ``topics`` : Thèmes à filtrer.
+* ``topics`` : Thèmes à filtrer à partir du fichier XML.
 * ``q``  et ``qtype``: Rechercher une localité. Exemple pour centrer au démarrage la carte sur une adresse en utilisant la BAN (base adresse nationale) : ``mviewer/?q=71 rue dupont des loges Rennes&qtype=ban``
 * ``addLayer`` : pour ajouter une couche WMS à la carte. ce paramètre prends comme valeur un objet **JSON** contenant
 

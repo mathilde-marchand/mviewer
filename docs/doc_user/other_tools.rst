@@ -7,7 +7,7 @@
 Outils additionnels
 ===================
 
-Les outils additionnels se comptent au nombre de trois :
+Par défaut, Les outils additionnels se comptent au nombre de trois. Il est possible d'en ajouter d'autres, se référer à la page ":ref:`_configextensions`".
 
 1. `Outils de mesure`_
 2. `Partage de carte`_

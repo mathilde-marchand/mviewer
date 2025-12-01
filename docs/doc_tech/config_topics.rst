@@ -16,7 +16,7 @@ Ici, les `couches <configlayers>` sont organisées de la manière suivante :
 
 * une **couche** (layer) est intégrée à un groupe ou à un thème,
 * un **groupe** est intégré à un thème et peut contenir entre 1 et *n* couches,
-* un **thème** est intégré au parent "themes" et peut contenir entre 1 et n groupes ainsi que 1 et *n* couches,
+* un **thème** est intégré au parent "themes" et peut contenir entre 0 et n groupes ainsi que 1 et *n* couches,
 * le parent "**themes**" peut contenir entre 1 et *n* thème,
 
 Ceci peut être résumé avec l'arborescence suivante :
@@ -138,8 +138,8 @@ Configuration de la liste des thèmes
 
 **Paramètres**
 
-* ``mini``: paramètre optionnel de type booléen (true/false) qui précise si le panneau de gauche est réduit à l'ouverture de l'application. L'attribut ``collapsed`` des ``<theme>`` doit être à true pour que cet attribut soit pris en compte. Défaut = false.
-* ``legendmini``: paramètre optionnel de type booléen (true/false)  qui précise si le panneau de la légende est réduit à l'ouverture de l'application. Défaut = false.
+* ``mini``: paramètre optionnel de type booléen (true/false) qui précise si le panneau de gauche est réduit à l'ouverture de l'application. L'attribut ``collapsed`` des ``<theme>`` doit être à true pour que cet attribut soit pris en compte. Valeur par défaut **false**.
+* ``legendmini``: paramètre optionnel de type booléen (true/false)  qui précise si le panneau de la légende est réduit à l'ouverture de l'application. Valeur par défaut **false**.
 
 
 **Syntaxe** ``<theme>``
@@ -176,7 +176,7 @@ Voici un exemple d'icône personnalisée :
         background-size: 16px 16px;
         margin-top: 9px;
 	}
-* ``url`` :guilabel:`studio` : Des thèmes externes (présents dans d'autres configurations peuvent être automatiquement chargés par référence au fichier xml utilisé (url=) et à l'id de la thématique (id=). Attention si la configuration externe est sur un autre domaine, il faut alors que mviewer utilise un proxy Ajax ou alors s'assurer que CORS est activé sur le serveur distant. Les thématiques externes peuvent utiliser des ressources particulières (templates, customLayer, sld...) si les URLs de ces ressources sont absolues et accessibles.
+* ``url`` :guilabel:`studio` : Des thèmes externes (présents dans d'autres configurations) peuvent être automatiquement chargés par référence au fichier xml utilisé (url=) et à l'id de la thématique (id=). Attention si la configuration externe est sur un autre domaine, il faut alors que mviewer utilise un proxy Ajax ou alors s'assurer que CORS est activé sur le serveur distant. Les thématiques externes peuvent utiliser des ressources particulières (templates, customLayer, sld...) si les URLs de ces ressources sont absolues et accessibles.
 
 
 **Syntaxe** ``<group>``

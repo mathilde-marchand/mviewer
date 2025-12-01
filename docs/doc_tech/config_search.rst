@@ -21,7 +21,7 @@ Liens vers service d'autocomplétion et de géocodage d'adresses.
 **Attributs**
 
 * ``url``: URL du service d'autocomplétion ou de géocodage de l'IGN. Voir les services disponibles :  https://geoservices.ign.fr/services-geoplateforme-geocodage-autocompletion
-* ``type``: Option - Type de service utilisé "completion" ou "search" - defaut = "completion"
+* ``type``: Option - Type de service utilisé "completion" ou "search". Defaut = "completion"
 * ``attribution``: Attribution du service de geocodage.
 
 **Exemple**
@@ -83,7 +83,7 @@ Options liées à la recherche d'adresse *(olscompletion)* et/ou à la recherche
 * ``imgurl`` *(optionnel)* : Url de l'image PNG / JPEG à afficher à l'emplacement du résultat sélectionné en guise de pointeur.
 * ``imgwidth`` *(optionnel)* : Taille de l'image (voir paramètre imgurl) du pointeur représentant le résultat sélectionné.
 * ``svgcolor`` *(optionnel)* : Couleur du pointeur représentant la localisation du résultat sélectionné.
-* ``searchmaxzoomlevel`` *(optionnel)* : définit le niveau de zoom maximal appliqué lors d'une recherche ELS ou fuse (valeur par défaut = 15) Pour une géométrie de type polygone ou multi-polygone, le zoom est calculé selon l'étendue.
+* ``searchmaxzoomlevel`` *(optionnel)* : Définit le niveau de zoom maximal appliqué lors d'une recherche ELS ou fuse (valeur par défaut = 15) Pour une géométrie de type polygone ou multi-polygone, le zoom est calculé selon l'étendue.
 
 .. figure:: ../_images/dev/config_search/option-animate.gif
             :alt: activation de l'option animate

@@ -7,7 +7,7 @@
 Barre de recherche
 ==================
 
-La barre de recherche, située en haut à droite de l'interface, permet de rechercher tout type de lieux, comme par exemple des noms de communes, de département ou de région ainsi que, si c'est paramètré, des entités.
+La barre de recherche, située en haut à droite de l'interface, permet de rechercher par défaut des adresses. Via paramétrage, il est aussi possible d'ajouter des informations contenues dans les entités.
 
 .. image:: ../_images/user/search/search.png
               :alt: Barre de recherche
@@ -22,7 +22,7 @@ Options
 
 En cliquant sur l'icone composée de 3 points, l'utilisateur à la possibilité d'affiner les options de recherche, avec les choix suivants :
 
-* Rechercher dans l'emprise de la carte
+* Rechercher dans l'emprise de la carte uniquement
 * Rechercher des adresses
 * Rechercher des entités
 

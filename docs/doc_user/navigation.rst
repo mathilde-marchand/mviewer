@@ -10,7 +10,7 @@ Outils de navigation
 Pour naviguer dans la carte, l'utilisateur à la possibilité d'utiliser trois outils présents sur la droite de l'interface :
 
 * Zoom + ( |ZoomIn| )
-* Zoom sur la position initiale ( |ZoomFull| )
+* Zoom sur la position initiale de la carte ( |ZoomFull| )
 * Zoom - ( |ZoomOut| )
 
 .. |ZoomIn| image:: ../_images/user/navigation/zoom_in.png

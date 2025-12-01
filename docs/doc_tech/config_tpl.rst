@@ -93,12 +93,12 @@ Les éléments suivants en rouge sont obligatoires.
 **Explications du template mustache** : 
 
 - ``{{#features}}{{/features}}`` est une boucle effectuée sur chaque entité présente dans la couche sélectionnée.
-- {{surface}} affiche le contenu du champ surface.
+- ``{{surface}}`` affiche le contenu du champ surface.
 - ``<li id="{{feature_ol_uid}}" class="item"></li>`` est une entrée de liste html utilisée par le mviewer. S'il y a plusieurs entrées de liste car plusieurs entités sélectionnées, le mviewer présentera les réponses sous la forme d'un carousel.
 - Pour synchroniser le carousel et la sous-sélection sur la carte lors d'un clic, l'injection de la ``feature_ol_uid`` est requise dans l' ``id`` de la balise.
 - Puisque une ``feature id`` n'est pas obligatoire comme attribut pour une feature l' ``ol_uid`` interne d'OpenLayers est utilisée à ce propos.
-- <style> permet d'injecter du code CSS / HTML de personnalisation des styles utilisés dans le template.
-- <script> permet d'injecter du code JavaScript.
+- ``<style>`` permet d'injecter du code CSS / HTML de personnalisation des styles utilisés dans le template.
+- ``<script>`` permet d'injecter du code JavaScript.
 
 
 Résultat de l'exemple ci-dessus
