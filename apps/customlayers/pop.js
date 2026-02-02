@@ -1,19 +1,18 @@
-mviewer.customLayers.joconde = (function () {
+mviewer.customLayers.pop = (function () {
   /**
    * Global config
    */
-  const baseUrl =
-    "https://data.culture.gouv.fr/api/explore/v2.1/catalog/datasets/base-joconde-extrait/records";
+  const proxy = "https://cors-anywhere.herokuapp.com/";
 
   /**
    * Layers config
    */
-  const layerId = "joconde";
+  const layerId = "pop";
 
   const vectorSource = new ol.source.Vector();
 
   const clusterSource = new ol.source.Cluster({
-    distance: 15,
+    distance: 0,
     source: vectorSource,
   });
 
@@ -52,40 +51,58 @@ mviewer.customLayers.joconde = (function () {
     vectorSource.clear();
 
     do {
-      const params =
-        `?limit=${limit}` +
-        `&offset=${offset}` +
-        // `&where=region="Ile-de-France"&where=auteur="${auteur}"`;
-        `&where=auteur like '%${auteur}%'`;
+      const baseUrl = "https://api.pop.culture.gouv.fr/search/simple";
 
-      const url = baseUrl + params;
-      console.log("joconde url searchAuteur:", url);
+      const params =
+        `?text=${auteur}&from=0&size=1000` +
+        `&facets[base][0]=joconde` +
+        `&facets[base][1]=merimee`;
+      // `&facets[authors][0]=${auteur}`;
+
+      // &facets%5Bauthors%5D%5B0%5D=Perret%20Auguste%20(architecte)`;
+
+      // On encode les paramètres pour gérer les espaces et caractères spéciaux
+      // const url = proxy + baseUrl + params;
+      const url =
+        (window.location.hostname === "localhost" ? proxy : "") +
+        baseUrl +
+        params;
+      console.log("url :", url);
 
       const response = await fetch(url);
       const data = await response.json();
 
+      // console.log("hits :", data.hits);
+      console.log("data all :", data);
+
       total = data.total_count;
 
-      // clear the layer from previous data
-      vectorSource.clear();
+      data.hits.forEach((musee) => {
+        // console.log(musee);
 
-      data.results.forEach((musee) => {
-        if (musee.coordonnees?.lon && musee.coordonnees?.lat) {
+        if (
+          musee._source.POP_COORDONNEES?.lon &&
+          musee._source.POP_COORDONNEES?.lat
+        ) {
           const feature = new ol.Feature({
             geometry: new ol.geom.Point(
               ol.proj.fromLonLat([
-                musee.coordonnees.lon,
-                musee.coordonnees.lat,
+                musee._source.POP_COORDONNEES.lon,
+                musee._source.POP_COORDONNEES.lat,
+                // musee._associatedNotices[0].notices[0].POP_COORDONNEES.lon,
+                // musee._associatedNotices[0].notices[0].POP_COORDONNEES.lat,
               ]),
             ),
             // TODO add props
-            auteur: musee.auteur,
-            nom_officiel_musee:
-              musee.nom_officiel_musee.charAt(0).toUpperCase() +
-              musee.nom_officiel_musee.slice(1),
-            titre: musee.titre,
-            appellation: musee.appellation,
-            reference: musee.reference,
+            // auteur: musee._source.authors,
+            // nom_officiel_musee:
+            //   musee.nom_officiel_musee.charAt(0).toUpperCase() +
+            //   musee.nom_officiel_musee.slice(1),
+            // localisation: musee._source.LOCA,
+            // titre: musee.titre,
+            // appellation: musee.appellation,
+            // ville: musee.ville,
+            // reference: musee.reference,
           });
           vectorSource.addFeature(feature);
         }
@@ -100,8 +117,8 @@ mviewer.customLayers.joconde = (function () {
    */
   function initSearchInput() {
     let debounceTimer;
-    const suggestionsList = document.getElementById("suggestions-joconde");
-    const input = document.getElementById("search-joconde");
+    const suggestionsList = document.getElementById("suggestions-pop");
+    const input = document.getElementById("search-pop");
 
     input.addEventListener("input", (e) => {
       const valeur = e.target.value;
@@ -133,16 +150,53 @@ mviewer.customLayers.joconde = (function () {
 
   // TODO récupérer uniquement l'attribut AUTR
   async function getSuggestions(recherche) {
-    const params = `?limit=100` + `&where=search(auteur, "${recherche}")`;
-    // `&where=lower(auteur) like "*sout*"`;
+    const baseUrl = "https://api.pop.culture.gouv.fr/search/advanced";
 
-    const url = baseUrl + params;
-    console.log("joconde url getSuggestions :", url);
+    const bodyQuery = {
+      bases: ["joconde", "merimee"],
+      crits: [
+        {
+          crits: [
+            {
+              base: "joconde",
+              fields: "AUTR",
+              operator: "*",
+              value: recherche,
+            },
+          ],
+        },
+        {
+          crits: [
+            {
+              base: "merimee",
+              fields: "AUTR",
+              operator: "*",
+              value: recherche,
+            },
+          ],
+          combinator: "OR",
+        },
+      ],
+      size: 30,
+      from: 0,
+    };
 
-    const response = await fetch(url);
-    const data = await response.json();
-
-    cleanSuggestions(data.results, recherche);
+    try {
+      const url =
+        (window.location.hostname === "localhost" ? proxy : "") + baseUrl;
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(bodyQuery),
+      });
+      const data = await response.json();
+      // console.log(data.hits);
+      cleanSuggestions(data.hits, recherche);
+    } catch (error) {
+      console.error("Erreur getSuggestions :", error);
+    }
   }
 
   function normalizeNoAccent(str) {
@@ -153,40 +207,32 @@ mviewer.customLayers.joconde = (function () {
       .trim();
   }
 
-  function cleanSuggestions(results, recherche) {
+  function cleanSuggestions(hits, recherche) {
     const auteursMap = new Map();
-    const rechercheNorm = normalizeNoAccent(recherche.toLowerCase());
 
-    results.forEach((res) => {
-      // On récupère la valeur, qu'elle vienne de .auteur (Joconde) ou .auteurs (Mérimée)
-      const auteurBrut = res.auteur || "";
-
-      // On transforme tout en tableau pour traiter de la même manière "Auteur seul" et "A; B; C"
-      const auteursList = auteurBrut.includes(";")
-        ? auteurBrut.split(";")
-        : [auteurBrut];
-
-      auteursList.forEach((aut) => {
-        // 1. Nettoyage (on enlève les dates entre parenthèses)
-        const cleanedAuthor = aut.split("(")[0].trim();
-        if (!cleanedAuthor) return; // Ignore les chaînes vides
-
+    hits.forEach((hit) => {
+      hit._source.authors.forEach((author) => {
+        const cleanedAuthor = author.split("(")[0].trim();
         const key = normalizeNoAccent(cleanedAuthor);
-        const cleanedAuthorNorm = normalizeNoAccent(
-          cleanedAuthor.toLowerCase(),
-        );
-
-        // 2. Filtre par rapport à la recherche
-        if (cleanedAuthorNorm.includes(rechercheNorm)) {
+        if (
+          normalizeNoAccent(cleanedAuthor.toLowerCase()).includes(
+            normalizeNoAccent(recherche.toLowerCase()),
+          )
+        ) {
           if (auteursMap.has(key)) {
             const existing = auteursMap.get(key);
-            // Logique de remplacement si la nouvelle version est mieux accentuée
+            // si la version existante n'a pas d'accents mais que la nouvelle en a, on remplace
             if (
-              existing !== cleanedAuthor &&
-              hasAccents(cleanedAuthor) &&
-              !hasAccents(existing)
+              normalizeNoAccent(existing) ===
+                normalizeNoAccent(cleanedAuthor) &&
+              existing !== cleanedAuthor
             ) {
-              auteursMap.set(key, cleanedAuthor);
+              if (
+                existing ===
+                existing.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+              ) {
+                auteursMap.set(key, cleanedAuthor); // garde la version accentuée
+              }
             }
           } else {
             auteursMap.set(key, cleanedAuthor);
@@ -194,22 +240,18 @@ mviewer.customLayers.joconde = (function () {
         }
       });
     });
-
     const auteursAlph = [...auteursMap.values()].sort((a, b) =>
       a.localeCompare(b),
     );
-    console.log(auteursAlph);
+    // console.log(auteursAlph);
     addSuggestions(auteursAlph);
-  }
-
-  // Petite fonction helper pour la clarté
-  function hasAccents(str) {
-    return str !== str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    // console.log("Résultats authors :", data.hits[0]._source.authors);
+    // console.log("Résultats AUTR :", data.hits[0]._source.AUTR);
   }
 
   function addSuggestions(matches) {
-    const input = document.getElementById("search-joconde");
-    const ul = document.getElementById("suggestions-joconde");
+    const input = document.getElementById("search-pop");
+    const ul = document.getElementById("suggestions-pop");
     ul.innerHTML = "";
     ul.classList.remove("d-none");
 
@@ -231,9 +273,9 @@ mviewer.customLayers.joconde = (function () {
   }
 
   function initClearInputBtn() {
-    const btn = document.getElementById("clear-input-joconde");
-    const ul = document.getElementById("suggestions-joconde");
-    const input = document.getElementById("search-joconde");
+    const btn = document.getElementById("clear-input-pop");
+    const ul = document.getElementById("suggestions-pop");
+    const input = document.getElementById("search-pop");
 
     btn.addEventListener("click", () => {
       input.value = "";
@@ -357,9 +399,9 @@ mviewer.customLayers.joconde = (function () {
   }
 
   return {
-    joconde: layerId,
+    pop: layerId,
     layer: layer,
     init: init,
-    handle: handle,
+    // handle: handle,
   };
 })();

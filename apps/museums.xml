@@ -3,7 +3,7 @@
     <application title="Mviewer" mouseposition="false" logo="" help="mviewer_help.html"
         measuretools="true" mapprint="true" exportpng="true" togglealllayersfromtheme="true" />
 
-    <mapoptions maxzoom="20" projection="EPSG:3857" rotation="true" center="285105.56,5900608.18"
+    <mapoptions maxzoom="20" projection="EPSG:3857" rotation="true" center="305905.56, 5919999.18"
         zoom="6" projextent="-20037508.342789244, -20037508.342789244, 20037508.342789244, 20037508.342789244" />
 
     <baselayers style="gallery">
@@ -38,7 +38,7 @@
     <searchparameters bbox="false" localities="true" features="false" />
 
     <themes mini="true" legendmini="false">
-        <theme name="Musées" collapsed="false" id="museums" icon="fas fa-users">
+        <theme name="Musées" collapsed="true" id="museums" icon="fas fa-users">
             <!-- <layer
                 id="museophile"
                 name="Musées"
@@ -68,14 +68,31 @@
                 expanded="true"
                 url="apps/customlayers/joconde.js"
                 visible="true"
-                index="1"
                 infohighlight="true"
                 legendurl=""
                 attribution="Source : Base Joconde"
                 vectorlegend="true"
                 queryable="true"
                 showintoc="true">
-                <!-- <template url="apps/templates/joconde.mst"></template> -->
+                <template url="apps/templates/joconde.mst"></template>
+            </layer>
+            <layer
+                id="pop"
+                name="Rechercher une notice"
+                type="customlayer"
+                customcontrol="true"
+                customcontrolpath="apps/customcontrols"
+                infoformat="text/html"
+                expanded="true"
+                url="apps/customlayers/pop.js"
+                visible="true"
+                infohighlight="true"
+                legendurl=""
+                attribution="Source : POP"
+                vectorlegend="true"
+                queryable="true"
+                showintoc="true">
+                <!-- <template url="apps/templates/pop.mst"></template> -->
             </layer>
             <!-- <layer
                 id="GCS:CONTOURS_DEPARTEMENT_IDF"
