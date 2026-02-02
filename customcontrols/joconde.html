@@ -1,0 +1,86 @@
+<div class="position-relative w-100" style="max-width: 400px">
+  <div class="container">
+    <div class="div1">
+      <input
+        id="search"
+        type="text"
+        class="form-control"
+        placeholder="Rechercher..."
+        autocomplete="on"
+      />
+    </div>
+    <div class="div2">
+      <button id="clear-input" type="button" class="btn btn-outline-primary">
+        X
+      </button>
+    </div>
+  </div>
+
+  <ul
+    id="suggestions"
+    class="list-group position-absolute w-100 shadow-sm"
+    style="z-index: 1050"
+  ></ul>
+</div>
+
+<br />
+
+<div class="custom-block check-line">
+  <div class="input-color">
+    <div class="color-box"></div>
+    <span class="title">Collection des musées de France</span>
+  </div>
+</div>
+<br />
+
+<style>
+  .btn_ {
+    border-radius: 25px !important;
+  }
+  .container {
+    display: flex;
+    gap: 5px; /* espace entre les divs */
+  }
+
+  .div1 {
+    flex: 8; /* chacune prend 50% */
+  }
+
+  .div2 {
+    flex: 1; /* chacune prend 50% */
+  }
+
+  .form-group-opacity,
+  .layerdisplay-legend,
+  .filterTitle {
+    display: none;
+  }
+
+  .input-color {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .input-color .color-box {
+    width: 20px;
+    height: 20px;
+    border-radius: 12px;
+    background-color: rgb(130, 207, 232);
+    position: initial;
+    left: 5px;
+    top: 5px;
+    margin: 0px 7px;
+    padding: 5px;
+  }
+
+  .title {
+    font-size: 12px;
+    font-style: normal !important;
+  }
+
+  .props-auteur {
+    font-style: italic;
+    font-size: 13px; /* ou 14px, 1em, etc. */
+  }
+</style>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <application title="Mviewer" mouseposition="false" logo="" help="mviewer_help.html"
+        measuretools="true" mapprint="true" exportpng="true" togglealllayersfromtheme="true" />
+
+    <mapoptions maxzoom="20" projection="EPSG:3857" rotation="true" center="285105.56,5900608.18"
+        zoom="6" projextent="-20037508.342789244, -20037508.342789244, 20037508.342789244, 20037508.342789244" />
+
+    <baselayers style="gallery">
+        <baselayer visible="false" type="OSM" id="darkmatter" label="Dark Matter" title="CartoDb"
+            thumbgallery="img/basemap/darkmatter.png"
+            url="http://{a-c}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png" maxzoom="20"
+            attribution="Map tiles by CartoDb, under CC BY 3.0" />
+        <baselayer visible="true" id="positron" thumbgallery="img/basemap/positron.png"
+            title="CartoDb" label="Positron" type="OSM"
+            url="https://{a-c}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"
+            attribution="Map tiles by  &lt;a href=&quot;https://cartodb.com/attributions&quot;&gt;CartoDb&lt;/a&gt;, under  &lt;a href=&quot;https://creativecommons.org/licenses/by/3.0/&quot;&gt;CC BY 3.0 &lt;/a&gt;" />
+        <baselayer type="WMTS" id="ortho" label="Photo aérienne IGN" title="GéoPortail"
+            maxscale="1000" thumbgallery="img/basemap/ortho.jpg"
+            url="https://data.geopf.fr/wmts" layers="ORTHOIMAGERY.ORTHOPHOTOS" format="image/jpeg"
+            visible="false" fromcapacity="false"
+            attribution="&lt;a href='https://geoservices.ign.fr/services-geoplateforme-diffusion' target='_blank'>&lt;img src='img/basemap/geoservices.png'>&lt;/a>"
+            style="normal" matrixset="PM" maxzoom="22" />
+        <baselayer type="WMS" id="osm" label="OpenStreetMap" title="Plan OSM Géobretagne"
+            thumbgallery="img/basemap/osm.png"
+            url="https://tile.geobretagne.fr/osm/service" layers="osm:grey" format="image/png"
+            visible="false"
+            attribution="GéoBretagne. Données : les contributeurs d'&lt;a href='https://www.openstreetmap.org/' target='_blank'>OpenStreetMap &lt;/a>,  &lt;a href='https://www.openstreetmap.org/copyright' target='_blank'>ODbL &lt;/a>" />
+    </baselayers>
+
+    <proxy url="" />
+
+    <!-- <olscompletion url="https://api-adresse.data.gouv.fr/search/" type="search" attribution="La
+    recherche d'adresse est un service de l'IGN via les données de la BAN"/> -->
+    <olscompletion url="https://data.geopf.fr/geocodage/completion" type="completion"
+        attribution="Service d'autocomplétion de l'IGN" />
+
+    <searchparameters bbox="false" localities="true" features="false" />
+
+    <themes mini="true" legendmini="false">
+        <theme name="Musées" collapsed="false" id="museums" icon="fas fa-users">
+            <!-- <layer
+                id="museophile"
+                name="Musées"
+                type="customlayer"
+                customcontrol="false"
+                customcontrolpath="apps/customcontrols"
+                infoformat="text/html"
+                expanded="true"
+                url="apps/customlayers/museophile.js"
+                visible="true"
+                index="2"
+                infohighlight="true"
+                legendurl=""
+                attribution="Source : Base Muséophile"
+                vectorlegend="true"
+                queryable="true"
+                showintoc="true">
+                <template url="apps/templates/museophile.mst"></template>
+            </layer> -->
+            <layer
+                id="joconde"
+                name="Rechercher un auteur"
+                type="customlayer"
+                customcontrol="true"
+                customcontrolpath="apps/customcontrols"
+                infoformat="text/html"
+                expanded="true"
+                url="apps/customlayers/joconde.js"
+                visible="true"
+                index="1"
+                infohighlight="true"
+                legendurl=""
+                attribution="Source : Base Joconde"
+                vectorlegend="true"
+                queryable="true"
+                showintoc="true">
+                <!-- <template url="apps/templates/joconde.mst"></template> -->
+            </layer>
+            <!-- <layer
+                id="GCS:CONTOURS_DEPARTEMENT_IDF"
+                name="Contours départements Ile-de-France"
+                type="wms"
+                url="https://santegraphie.fr/geoserver/ows"
+                infoformat="text/html"
+                queryable="false"
+                index="3"
+                showintoc="false"
+                visible="true">
+            </layer> -->
+        </theme>
+    </themes>
+</config>
