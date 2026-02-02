@@ -1,0 +1,16 @@
+{{#features}}
+<li class="item" style="width:100%;" id="{{feature_ol_uid}}">
+
+    <h3 class="title-feature">{{nom_officiel_musee}}</h3>
+    <h5 class="subtitle-feature">{{ville}}</h5><br>
+
+    <h4 class="subtitle-feature">Collection du musée ({{clusterSize}})</h4>
+
+    <p class="all-titles">
+        <ul>
+            {{{htmlContent}}}
+        </ul>
+    </p>
+
+</li>
+{{/features}}

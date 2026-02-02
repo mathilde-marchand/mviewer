@@ -1,0 +1,23 @@
+{{#features}}
+<li class="item" style="width:100%;" id="{{feature_ol_uid}}">
+
+        <h3 class="title-feature">{{nom_officiel}}</h3>
+        <h4 class="subtitle-feature">adresse</h4>    
+
+    <p>
+        <b>Adresse</b>  : {{#adresse}}{{adresse}}{{/adresse}}{{^adresse}}Non renseigné{{/adresse}}<br>
+        <b>Commune</b> : {{#commune}}{{commune}}{{/commune}} {{^commune}}Non renseigné{{/commune}}<br>
+        <b>Code postal</b> : {{#code_postal}}{{code_postal}}{{/code_postal}} {{^code_postal}}Non renseigné{{/code_postal}}<br>
+    </p>      
+
+    <h4 class="subtitle-feature">test</h4>   
+    <table>
+        {{#histoire}}
+        <tr>
+            <td>{{histoire}}</td>
+        </tr>
+        {{/histoire}}
+    </table>
+</li>
+
+{{/features}}
