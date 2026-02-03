@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config>
-    <application title="Mviewer" mouseposition="false" logo="" help="mviewer_help.html"
+    <application title="Collections des musées de France" mouseposition="false" nologo="true" logo="" help="mviewer_help.html"
         measuretools="true" mapprint="true" exportpng="true" togglealllayersfromtheme="true" />
 
     <mapoptions maxzoom="20" projection="EPSG:3857" rotation="true" center="305905.56, 5919999.18"
@@ -69,6 +69,7 @@
                 url="apps/customlayers/joconde.js"
                 visible="true"
                 infohighlight="true"
+                index="1"
                 legendurl=""
                 attribution="Source : Base Joconde"
                 vectorlegend="true"
@@ -76,7 +77,7 @@
                 showintoc="true">
                 <template url="apps/templates/joconde.mst"></template>
             </layer>
-            <layer
+            <!-- <layer
                 id="pop"
                 name="Rechercher une notice"
                 type="customlayer"
@@ -92,8 +93,8 @@
                 vectorlegend="true"
                 queryable="true"
                 showintoc="true">
-                <!-- <template url="apps/templates/pop.mst"></template> -->
-            </layer>
+                <template url="apps/templates/pop.mst"></template>
+            </layer> -->
             <!-- <layer
                 id="GCS:CONTOURS_DEPARTEMENT_IDF"
                 name="Contours départements Ile-de-France"
