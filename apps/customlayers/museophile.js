@@ -57,8 +57,9 @@ mviewer.customLayers.museophile = (function () {
     let total = 0;
 
     do {
-      const url = `https://data.culturecommunication.gouv.fr/api/explore/v2.1/catalog/datasets/musees-de-france-base-museofile/records?limit=${limit}&offset=${offset}&refine=region:%22Ile-de-France%22`;
+      const url = `https://data.culturecommunication.gouv.fr/api/explore/v2.1/catalog/datasets/musees-de-france-base-museofile/records?limit=${limit}&offset=${offset}`;
 
+      console.log(url);
       const response = await fetch(url);
       const data = await response.json();
 
@@ -68,7 +69,10 @@ mviewer.customLayers.museophile = (function () {
         if (musee.coordonnees?.lon && musee.coordonnees?.lat) {
           const feature = new ol.Feature({
             geometry: new ol.geom.Point(
-              ol.proj.fromLonLat([musee.coordonnees.lon, musee.coordonnees.lat])
+              ol.proj.fromLonLat([
+                musee.coordonnees.lon,
+                musee.coordonnees.lat,
+              ]),
             ),
             identifiant: musee.identifiant,
             nom_officiel: musee.nom_officiel,
@@ -99,6 +103,10 @@ mviewer.customLayers.museophile = (function () {
       });
       offset += limit;
     } while (offset < total);
+
+    // // On récupère l'emprise de tous les objets présents dans la source vectorielle
+    // const extent = vectorSource.getExtent();
+    // console.log(vectorSource.getExtent());
   }
 
   chargerMusees();

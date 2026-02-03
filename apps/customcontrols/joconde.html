@@ -27,12 +27,23 @@
   ></ul>
 </div>
 
-<br />
+<!-- Warning messages -->
+<div id="warning-no-data" class="alert alert-warning d-none">
+  Pas de résultats pour cette recherche
+</div>
+<div id="warning-limit-exceeded" class="alert alert-warning d-none">
+  La recherche est limitée aux 10 000 premiers résultats. L'intégralité des
+  résultats ne peut être récupéré.
+</div>
+<div id="warning-fetch-data" class="alert alert-warning d-none">
+  Récupération des résultats...
+</div>
 
+<br />
 <div class="custom-block check-line">
   <div class="input-color">
-    <div class="color-box"></div>
-    <span class="title">Collection des musées de France</span>
+    <div class="color-box">7</div>
+    <span class="title">Nombre d'oeuvre(s)</span>
   </div>
 </div>
 <br />
@@ -56,6 +67,8 @@
 
   .form-group-opacity,
   .layerdisplay-legend,
+  .flex-column,
+  .mv-header,
   .filterTitle {
     display: none;
   }
@@ -67,24 +80,28 @@
   }
 
   .input-color .color-box {
-    width: 20px;
-    height: 20px;
-    border-radius: 12px;
-    background-color: rgb(130, 207, 232);
-    position: initial;
-    left: 5px;
-    top: 5px;
+    width: 30px; /* Augmenté légèrement pour le confort */
+    height: 30px;
+    border-radius: 50%; /* Cercle parfait */
+    background-color: rgba(171, 132, 223, 0.6);
     margin: 0px 7px;
-    padding: 5px;
+
+    /* Flexbox pour centrer le contenu */
+    display: flex;
+    align-items: center; /* Centrage vertical */
+    justify-content: center; /* Centrage horizontal */
+
+    /* Typographie */
+    color: white;
+    font-size: 14px;
+    /* font-weight: bold; */
+
+    /* On retire le padding qui casse la taille fixe */
+    padding: 0;
   }
 
   .title {
     font-size: 12px;
     font-style: normal !important;
-  }
-
-  .props-auteur {
-    font-style: italic;
-    font-size: 13px; /* ou 14px, 1em, etc. */
   }
 </style>
